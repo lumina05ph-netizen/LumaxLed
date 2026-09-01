@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LUMAX LED Trading - Modern LED Lighting Products">
+<title>LUMAX LED Trading | Light Up Your Life</title>
+
+<style>
+:root{
+  --gold:#f5b900;
+  --gold2:#ffcc33;
+  --dark:#070b12;
+  --dark2:#101827;
+  --card:#111a29;
+  --text:#f7f7f7;
+  --muted:#b9c1cc;
+  --line:rgba(255,255,255,.10);
+  --shadow:0 18px 50px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    margin: 0;
+    background-image: url("Logo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #ffffff;
+}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+
+header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(7,11,18,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  max-width:1200px;margin:auto;padding:12px 18px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.logo{
+  display:flex;align-items:center;gap:10px;font-weight:900;font-size:26px;
+  letter-spacing:1px;
+}
+.logo img{
+  width:52px;height:52px;border-radius:12px;object-fit:cover;
+  box-shadow:0 0 25px rgba(0,132,255,.35);
+}
+.logo span{color:var(--blue)}
+.navlinks{display:flex;gap:8px;flex-wrap:wrap}
+.navlinks a{
+  padding:9px 12px;border-radius:10px;color:#e8edf5;font-weight:700;font-size:14px;
+}
+.navlinks a:hover{background:rgba(255,255,255,.08);color:var(--gold2)}
+
+.hero{
+  min-height:530px;display:grid;place-items:center;text-align:center;padding:70px 18px;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.15),rgba(7,11,18,.95)),
+    url("images/1247.jpg") center/cover no-repeat;
+}
+.hero-inner{max-width:850px}
+.badge{
+  display:inline-block;padding:8px 14px;border:1px solid rgba(245,185,0,.45);
+  border-radius:999px;color:var(--gold2);background:rgba(245,185,0,.08);
+  font-weight:800;font-size:13px;letter-spacing:1px;
+}
+.hero h1{
+  font-size:clamp(42px,7vw,82px);margin:18px 0 8px;line-height:.95;
+  text-shadow:0 0 30px rgba(0,130,255,.35);
+}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:clamp(17px,2.4vw,23px);color:#e6ebf2;margin:18px auto;max-width:700px}
+.cta{
+  display:inline-flex;gap:10px;align-items:center;
+  padding:14px 22px;border-radius:14px;background:var(--gold);color:#111;
+  font-weight:900;box-shadow:0 10px 30px rgba(245,185,0,.2);
+  transition:.25s;
+}
+.cta:hover{transform:translateY(-3px);filter:brightness(1.08)}
+
+.section{max-width:1200px;margin:auto;padding:65px 18px}
+.section-title{text-align:center;margin-bottom:28px}
+.section-title h2{font-size:34px;margin:0 0 8px}
+.section-title p{color:var(--muted);margin:0}
+
+.controls{
+  display:grid;grid-template-columns:1fr auto;gap:12px;margin:24px 0;
+}
+.search{
+  width:100%;padding:15px 18px;border:1px solid var(--line);
+  border-radius:14px;background:#0d1522;color:white;outline:none;
+}
+.search:focus{border-color:var(--gold)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.filter{
+  border:1px solid var(--line);background:#0d1522;color:white;
+  border-radius:12px;padding:10px 13px;cursor:pointer;font-weight:700;
+}
+.filter.active,.filter:hover{background:var(--gold);color:#111;border-color:var(--gold)}
+
+.grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;
+}
+.card{
+  background:linear-gradient(180deg,#121d2d,#0d1420);
+  border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  box-shadow:var(--shadow);transition:.28s;
+  animation:rise .55s ease both;
+}
+.card:hover{transform:translateY(-7px);border-color:rgba(245,185,0,.55)}
+.card-img{height:280px;background:#080d15;overflow:hidden;position:relative}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.card:hover .card-img img{transform:scale(1.06)}
+.tag{
+  position:absolute;left:12px;top:12px;background:rgba(0,0,0,.72);
+  border:1px solid rgba(255,255,255,.15);padding:7px 10px;border-radius:999px;
+  font-size:12px;font-weight:800;color:var(--gold2)
+}
+.card-body{padding:17px}
+.card h3{margin:0 0 8px;font-size:21px}
+.card p{margin:0 0 15px;color:var(--muted);line-height:1.55;min-height:48px}
+.spec-mini{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:15px}
+.spec-mini span{
+  font-size:12px;padding:6px 8px;background:rgba(255,255,255,.06);
+  border-radius:8px;color:#dfe5ed
+}
+.view{
+  width:100%;padding:12px;border:0;border-radius:11px;cursor:pointer;
+  background:var(--gold);color:#111;font-weight:900;
+}
+.view:hover{filter:brightness(1.08)}
+
+.empty{
+  grid-column:1/-1;text-align:center;padding:55px;color:var(--muted);
+  border:1px dashed var(--line);border-radius:16px;
+}
+
+.features{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:25px;
+}
+.feature{
+  padding:22px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.03);
+  text-align:center;
+}
+.feature .icon{font-size:30px;margin-bottom:10px}
+.feature strong{display:block;margin-bottom:6px}
+.feature small{color:var(--muted);line-height:1.5}
+
+.contact{
+  background:linear-gradient(135deg,#111b2a,#090e17);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.contact-box{
+  display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;
+}
+.contact h2{font-size:40px;margin:0 0 10px}
+.contact p{color:var(--muted);line-height:1.7}
+.phone{
+  font-size:30px;color:var(--gold2);font-weight:900;letter-spacing:1px;
+}
+.contact-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{
+  display:inline-flex;padding:12px 16px;border-radius:12px;font-weight:900;
+  background:#182333;border:1px solid var(--line);
+}
+.btn.gold{background:var(--gold);color:#111}
+
+footer{
+  text-align:center;padding:30px 18px;color:var(--muted);
+}
+footer strong{color:var(--gold2)}
+
+.modal{
+  display:none;position:fixed;inset:0;z-index:2000;
+  background:rgba(0,0,0,.78);backdrop-filter:blur(8px);
+  padding:20px;overflow:auto;
+}
+.modal.show{display:grid;place-items:center}
+.modal-box{
+  width:min(1000px,100%);max-height:92vh;overflow:auto;
+  background:#0d1522;border:1px solid rgba(255,255,255,.12);
+  border-radius:22px;box-shadow:0 30px 90px rgba(0,0,0,.6);
+  animation:pop .25s ease;
+}
+.modal-top{
+  display:flex;justify-content:space-between;align-items:center;padding:16px 18px;
+  border-bottom:1px solid var(--line);position:sticky;top:0;background:#0d1522;z-index:2;
+}
+.close{
+  width:42px;height:42px;border-radius:50%;border:1px solid var(--line);
+  background:#172235;color:white;cursor:pointer;font-size:22px;
+}
+.modal-content{display:grid;grid-template-columns:1fr 1fr;gap:25px;padding:22px}
+.gallery-main{
+  width:100%;height:420px;border-radius:15px;overflow:hidden;background:#060a10;
+}
+.gallery-main img{width:100%;height:100%;object-fit:contain}
+.thumbs{display:flex;gap:8px;overflow:auto;margin-top:10px}
+.thumb{
+  width:70px;height:70px;border-radius:10px;overflow:hidden;cursor:pointer;
+  border:2px solid transparent;flex:0 0 auto;background:#111;
+}
+.thumb.active{border-color:var(--gold)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.modal h2{font-size:32px;margin:0 0 8px}
+.modal-desc{color:var(--muted);line-height:1.65}
+.spec-table{width:100%;border-collapse:collapse;margin-top:18px}
+.spec-table td{padding:11px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.spec-table td:first-child{color:var(--gold2);font-weight:800;width:40%}
+.note{
+  margin-top:16px;padding:12px;border-left:3px solid var(--gold);
+  background:rgba(245,185,0,.07);color:#dfe5ed;border-radius:8px;
+}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .features{grid-template-columns:repeat(2,1fr)}
+  .contact-box{grid-template-columns:1fr}
+  .modal-content{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+  .nav{align-items:flex-start}
+  .navlinks{display:none}
+  .controls{grid-template-columns:1fr}
+  .filters{justify-content:flex-start}
+  .grid{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr}
+  .card-img{height:330px}
+  .gallery-main{height:330px}
+  .hero{min-height:470px}
+  .phone{font-size:25px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="#home">
+      <img src="Logo.jpg" alt="LUMAX Logo">
+      <div>Lum<span>a</span>X</div>
+    </a>
+    <nav class="navlinks">
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="badge">LumaX LED TRADING</div>
+    <h1>LIGHT UP <span>YOUR LIFE</span></h1>
+    <p>Modern LED lighting solutions designed to make every space brighter, more stylish and more comfortable.</p>
+    <a class="cta" href="#products">VIEW PRODUCTS</a>
+  </div>
+</section>
+
+<section class="section" id="products">
+  <div class="section-title">
+    <h2>Our LED Products</h2>
+    <p>Search a product, choose a category, then tap <b>VIEW FULL DETAILS</b>.</p>
+  </div>
+
+  <div class="controls">
+    <input class="search" id="searchBox" type="search"
+      placeholder="🔎 Search product name, category or specification..."
+      oninput="renderProducts()">
+    <div class="filters">
+      <button class="filter active" data-cat="All" onclick="setCategory('All',this)">All</button>
+      <button class="filter" data-cat="Ceiling" onclick="setCategory('Ceiling',this)">Ceiling Lights</button>
+      <button class="filter" data-cat="Wall" onclick="setCategory('Wall',this)">Wall Lights</button>
+      <button class="filter" data-cat="RGB" onclick="setCategory('RGB',this)">RGB</button>
+      <button class="filter" data-cat="PowerSupply" onclick="setCategory('PowerSupply',this)">PowerSupply</button>
+    </div>
+  </div>
+
+  <div class="grid" id="productGrid"></div>
+</section>
+
+<section class="section" id="about">
+  <div class="section-title">
+    <h2>Why Choose LUMAX?</h2>
+    <p>Lighting products for homes, businesses and modern spaces.</p>
+  </div>
+  <div class="features">
+    <div class="feature"><div class="icon">💡</div><strong>Bright Illumination</strong><small>Designed for attractive and practical lighting.</small></div>
+    <div class="feature"><div class="icon">✨</div><strong>Modern Design</strong><small>Stylish designs that complement different interiors.</small></div>
+    <div class="feature"><div class="icon">⚡</div><strong>Energy Saving</strong><small>LED technology for efficient everyday lighting.</small></div>
+    <div class="feature"><div class="icon">🛠️</div><strong>Easy Installation</strong><small>Product-specific installation details are shown on each item.</small></div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="section contact-box" id="contact">
+    <div>
+      <h2>Need More Information?</h2>
+      <p>For prices, availability, sizes, wattage and other product questions, contact LUMAX LED Trading directly.</p>
+      <div class="phone">📞 0951 003 9900</div>
+      <div class="contact-buttons">
+        <a class="btn gold" href="tel:09510039900">CALL NOW</a>
+        <a class="btn" href="sms:09510039900">SEND SMS</a>
+      </div>
+    </div>
+    <div>
+      <p><b>Tip:</b> Customers can open this website from your Facebook post and tap any product to see its complete details.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>LUMAX LED Trading</strong><br>
+  Light Up Your Life • © <span id="year"></span>
+</footer>
+
+<!-- PRODUCT DETAILS MODAL -->
+<div class="modal" id="productModal" onclick="outsideClose(event)">
+  <div class="modal-box">
+    <div class="modal-top">
+      <strong>LUMAX PRODUCT DETAILS</strong>
+      <button class="close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-content">
+      <div>
+        <div class="gallery-main"><img id="modalMainImage" src="" alt=""></div>
+        <div class="thumbs" id="modalThumbs"></div>
+      </div>
+      <div>
+        <h2 id="modalName"></h2>
+        <div class="badge" id="modalCategory"></div>
+        <p class="modal-desc" id="modalDescription"></p>
+        <table class="spec-table" id="specTable"></table>
+        <div class="note">📞 For price, stock and ordering: <b>0951 003 9900</b></div>
+        <div class="modal-actions">
+          <a class="btn gold" href="tel:09510039900">CALL TO INQUIRE</a>
+          <button class="btn" onclick="closeModal()">CLOSE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/*
+==========================================================
+  LUMAX PRODUCT DATABASE
+==========================================================
+
+  ⭐ THIS IS THE MAIN PART YOU WILL EDIT ⭐
+
+  To add another product:
+  1. Put the new picture inside the "images" folder.
+  2. Copy the PRODUCT TEMPLATE at the bottom of this list.
+  3. Change the name, category, pictures, description and specs.
+  4. Save the HTML file.
+  5. Upload the HTML + images folder to your hosting.
+
+  CATEGORY MUST BE:
+  "Ceiling" OR "Wall" OR "RGB"
+
+  You can add MANY pictures to one product:
+  images: [
+    "images/product-front.jpg",
+    "images/product-side.jpg",
+    "images/product-installed.jpg"
+  ]
+
+  IMPORTANT:
+  The specification values below are examples based on the information
+  supplied so far. Replace them with your confirmed product specifications.
+*/
+
+const  products = [
+
+  {
+    name: "LUMAX Modern LED Ceiling Light – Rectangle",
+    category: "Ceiling",
+    images: [
+      "4.jpg"
+    ],
+    description: "Modern LED ceiling light with an elegant layered rectangular design. Ideal for contemporary interiors.",
+    specs: {
+      "Power": "60W / 80W / 100W",
+      "Voltage": "220V – 240V / 50–60Hz",
+      "Light Color": "Warm White / Natural White / Cool White",
+      "Material": "Acrylic + Aluminum",
+      "Control": "Remote Control",
+      "Lifespan": "30,000+ Hours",
+      "Installation": "Ceiling Mounted",
+      "Recommended Areas": "Living Room, Bedroom, Dining Area, Hallway"
+    }
+  },
+
+  {
+    name: "LUMAX Modern LED Ceiling Light – Rectangle",
+    category: "Ceiling",
+    images: [
+      "6.jpg"
+    ],
+    description: "Modern LED ceiling light with an elegant layered rectangular design. Ideal for contemporary interiors.",
+    specs: {
+      "Power": "60W / 80W / 100W",
+      "Voltage": "220V – 240V / 50–60Hz",
+      "Light Color": "Warm White / Natural White / Cool White",
+      "Material": "Acrylic + Aluminum",
+      "Control": "Remote Control",
+      "Lifespan": "30,000+ Hours",
+      "Installation": "Ceiling Mounted",
+      "Recommended Areas": "Living Room, Bedroom, Dining Area, Hallway"
+    }
+  },
+                    {
+    name: " Modern LED Chandelier Light – RingStyle",
+    category: "Chandelier",
+    images: [
+      "3.jpg"
+    ],
+    description: "Modern LED ceiling light with an elegant layered rectangular design. Ideal for contemporary interiors.",
+    specs: {
+      "Power": "60W / 80W / 100W",
+      "Voltage": "220V – 240V / 50–60Hz",
+      "Light Color": "Warm White / Natural White / Cool White",
+      "Material": "Acrylic + Aluminum",
+      "Control": "Remote Control",
+      "Lifespan": "30,000+ Hours",
+      "Installation": "Ceiling Mounted",
+      "Recommended Areas": "Living Room, Bedroom, Dining Area, Hallway"
+    }
+  },
+
+  {
+    name: "Modern LED Chandelier Light – Rectangle",
+    category: "Chandelier",
+    images: [
+      "1.jpg"
+    ],
+    description: "Modern LED ceiling light with an elegant layered rectangular design. Ideal for contemporary interiors.",
+    specs: {
+      "Power": "60W / 80W / 100W",
+      "Voltage": "220V – 240V / 50–60Hz",
+      "Light Color": "Warm White / Natural White / Cool White",
+      "Material": "Acrylic + Aluminum",
+      "Control": "Remote Control",
+      "Lifespan": "30,000+ Hours",
+      "Installation": "Ceiling Mounted",
+      "Recommended Areas": "Living Room, Bedroom, Dining Area, Hallway"
+    }
+  },
+
+  {
+    name: "LUMAX Modern Chandelier Light – Round",
+    category: "Ceiling",
+    images: [
+      "7.jpg"
+    ],
+    description: "Modern LED ceiling light with an elegant layered rectangular design. Ideal for contemporary interiors.",
+    specs: {
+      "Power": "60W / 80W / 100W",
+      "Voltage": "220V – 240V / 50–60Hz",
+      "Light Color": "Warm White / Natural White / Cool White",
+      "Material": "Acrylic + Aluminum",
+      "Control": "Remote Control",
+      "Lifespan": "30,000+ Hours",
+      "Installation": "Ceiling Mounted",
+      "Recommended Areas": "Living Room, Bedroom, Dining Area, Hallway"
+    }
+  },
+
+  {
+    name: "LUMAX Modern LED Ceiling Light – Crystal",
+    category: "Ceiling",
+    images: [
+      "2.jpg"
+    ],
+    description: "Premium-looking LED ceiling light featuring a crystal-style decorative design and bright illumination.",
+    specs: {
+      "Power": "Confirm per model",
+      "Voltage": "220V – 240V",
+      "Light Color": "Warm White / Natural White / Cool White",
+      "Material": "Acrylic + Aluminum + Crystal",
+      "Lifespan": "30,000+ Hours",
+      "Installation": "Ceiling Mounted",
+      "Recommended Areas": "Living Room, Bedroom, Dining Area"
+    }
+  },
+
+  {
+    name: "LUMAX LED Ceiling Lights Collection",
+    category: "Ceiling",
+    images: [
+      "9.jpg"
+    ],
+    description: "A collection of modern round LED ceiling light designs suitable for different room styles.",
+    specs: {
+      "Power": "18W / 24W / 36W (sample)",
+      "Voltage": "220V – 240V / 50–60Hz",
+      "Light Color": "3000K / 4000K / 6500K",
+      "Light Source": "Built-in LED",
+      "CRI": ">80 (sample)",
+      "Lifespan": "30,000+ Hours",
+      "Installation": "Ceiling Mounted",
+      "Recommended Areas": "Living Room, Bedroom, Hallway, Office, Showroom"
+    }
+  },
+
+  {
+    name: "LUMAX RGB LED Strip Light",
+    category: "RGB",
+    images: [
+      "5.jpg"
+    ],
+    description: "Color-changing RGB LED strip light for decorative and ambient lighting. Great for bedrooms, gaming setups and TV walls.",
+    specs: {
+      "Type": "RGB LED Strip",
+      "Color": "RGB Multi-Color",
+      "Length": "Confirm available length",
+      "Control": "Confirm controller / remote type",
+      "Voltage": "Confirm model",
+      "Installation": "Adhesive / Mounted",
+      "Recommended Areas": "Bedroom, Gaming Room, TV Wall, Display Area"
+    }
+  },
+
+  {
+    name: "LUMAX LED Wall Light – Collection 01",
+    category: "Wall",
+    images: [
+      "10.jpg"
+    ],
+    description: "Modern wall light collection showing multiple warm-white lighting designs for decorative wall illumination.",
+    specs: {
+      "Light Color": "Warm White",
+      "Voltage": "Confirm model",
+      "Power": "Confirm model",
+      "Material": "Confirm model",
+      "Installation": "Wall Mounted",
+      "Lifespan": "Confirm model",
+      "Recommended Areas": "Hallway, Bedroom, Living Room, Exterior Walls"
+    }
+  },
+
+  {
+    name: "LUMAX LED Wall Light – Collection 02",
+    category: "Wall",
+    images: [
+      "11.jpg"
+    ],
+    description: "Contemporary black-finish wall lights producing warm decorative illumination.",
+    specs: {
+      "Light Color": "Warm White",
+      "Voltage": "Confirm model",
+      "Power": "Confirm model",
+      "Material": "Confirm model",
+      "Installation": "Wall Mounted",
+      "Lifespan": "Confirm model",
+      "Recommended Areas": "Hallway, Bedroom, Living Room, Stairway"
+    }
+  },
+
+  {
+    name: "LUMAX LED Wall Light – Collection 03",
+    category: "Wall",
+    images: [
+      "12.jpg"
+    ],
+    description: "Stylish wall-mounted LED designs with warm ambient light and modern shapes.",
+    specs: {
+      "Light Color": "Warm White",
+      "Voltage": "Confirm model",
+      "Power": "Confirm model",
+      "Material": "Confirm model",
+      "Installation": "Wall Mounted",
+      "Lifespan": "Confirm model",
+      "Recommended Areas": "Living Room, Bedroom, Hallway, Commercial Space"
+    }
+  },
+
+  {
+    name: "LUMAX LED Wall Light – Collection 04",
+    category: "Wall",
+    images: [
+      "13.jpg"
+    ],
+    description: "Modern wall light designs for creating a warm and comfortable atmosphere.",
+    specs: {
+      "Light Color": "Warm White",
+      "Voltage": "Confirm model",
+      "Power": "Confirm model",
+      "Material": "Confirm model",
+      "Installation": "Wall Mounted",
+      "Lifespan": "Confirm model",
+      "Recommended Areas": "Hallway, Bedroom, Living Room, Entrance"
+    }
+  },
+
+  {
+    name: "LUMAX COB LIghts – Single Color",
+    category: "Wall",
+    images: [
+      "22.jpg"
+    ],
+    description: "Modern wall light designs for creating a warm and comfortable atmosphere.",
+    specs: {
+      "Light Color": "Warm,White,Full White",
+      "Voltage": "24V",
+      "Power": "12W/M",
+      "Material": "Confirm model",
+      "Installation": "Wall Mounted",
+      "Lifespan": "Confirm model",
+      "Recommended Areas": "Hallway, Bedroom, Living Room, Entrance"
+    }
+  },
+
+   {
+    name: "Pendant Light – Single Color",
+    category: "Wall",
+    images: [
+      "8.jpg"
+    ],
+    description: "Modern wall light designs for creating a warm and comfortable atmosphere.",
+    specs: {
+      "Light Color": "Full White",
+      "Voltage": "220V",
+      "Material": "Confirm model",
+      "Installation": "Center Mounted",
+      "Lifespan": "Confirm model",
+      "Recommended Areas": "Hallway, Bedroom, Living Room, Entrance"
+    }
+  },
+
+  {
+    name: "LUMAX LED Wall Light – Up & Down",
+    category: "Wall",
+    images: [
+      "14.jpg"
+    ],
+    description: "Decorative up-and-down wall lighting design that creates an attractive beam effect on the wall.",
+    specs: {
+      "Light Color": "Warm White",
+      "Voltage": "Confirm model",
+      "Power": "Confirm model",
+      "Material": "Confirm model",
+      "Beam Effect": "Up & Down",
+      "Installation": "Wall Mounted",
+      "Lifespan": "Confirm model",
+      "Recommended Areas": "Exterior Wall, Hallway, Living Room, Entrance"
+    }
+  },
+
+  {
+    name: "Power Supply – Rectangle",
+    category: "Power Supply",
+    images: [
+      "19.jpg"
+    ],
+    description: "Modern PowerSupply For Cabinet Lights",
+    specs: {
+      "Power": "60W / 100W / 150W",
+      "Voltage": "220V – 240V / 50–60Hz",
+      "Materials":"Durable aluminum/metal housing with high-quality electronic components and heat-dissipating components, designed for reliable LED lighting applications.",
+      "Lifespan": "30,000–50,000 hours",
+      "Installation": "Mounted",
+    }
+  },
+
+  {
+    name: "Neon Strip Lights",
+    category: "StripLights",
+    images: [
+      "21.jpg"
+    ],
+    description: "Modern LED ceiling light with an elegant layered rectangular design. Ideal for contemporary interiors.",
+    specs: {
+      "Power": "10M/Roll",
+      "Voltage": "220V – 240V / 50–60Hz",
+      "Light Color": "Single Color",
+      "Lifespan": "30,000+ Hours",
+      "Installation": "Wall Mounted",
+      "Recommended Areas": "Living Room, Bedroom, Dining Area, Hallway"
+    }
+  },
+
+  {
+    name: "Modern LED Ceiling Light – Round",
+    category: "Ceiling",
+    images: [
+      "26.jpg"
+    ],
+    description: "Modern LED ceiling light with an elegant layered rectangular design. Ideal for contemporary interiors.",
+    specs: {
+      "Power": "60W / 80W / 100W",
+      "Voltage": "220V – 240V / 50–60Hz",
+      "Light Color": "Warm White / Natural White / Cool White",
+      "Material": "Acrylic + Aluminum",
+      "Control": "Remote Control",
+      "Lifespan": "30,000+ Hours",
+      "Installation": "Ceiling Mounted",
+      "Recommended Areas": "Living Room, Bedroom, Dining Area, Hallway"
+    }
+  },
+
+  {
+    name: "Modern LED Ceiling Light – Round",
+    category: "Ceiling",
+    images: [
+      "29.jpg"
+    ],
+    description: "Modern LED ceiling light with an elegant layered rectangular design. Ideal for contemporary interiors.",
+    specs: {
+      "Power": "60W / 80W / 100W",
+      "Voltage": "220V – 240V / 50–60Hz",
+      "Light Color": "Warm White / Natural White / Cool White",
+      "Material": "Acrylic + Aluminum",
+      "Control": "Remote Control",
+      "Lifespan": "30,000+ Hours",
+      "Installation": "Ceiling Mounted",
+      "Recommended Areas": "Living Room, Bedroom, Dining Area, Hallway"
+    }
+  },
+
+    {
+    name: "LED Power Supply",
+    category: "Power Supply",
+    images: [
+      "39.jpg"
+    ],
+    description: "Modern Powersupply.",
+    specs: {
+      "Power": "60W / 100W / 200W / 300W",
+      "Voltage": "220V – 240V / 50–60Hz",
+      "Material": "Durable aluminum/metal housing with high-quality electronic components and heat-dissipating components, designed for reliable LED lighting applications.",
+      "Lifespan": "30,000–50,000 hours",
+      "Installation": "Wall Mounted",
+      "Recommended Areas": "Living Room, Bedroom, Dining Area, Hallway"
+    }
+  },
+
+    {
+    name: "Aluminium Profile for LED Strip - V Shape",
+    category: "Aluminum Profile",
+    images: [
+      "40.jpg"
+    ],
+    description: "Sleek and durable aluminum profile for LED strips, designed for heat dissipation, LED protection, and a clean, professional lighting finish.",
+    specs: {
+      "Material": "Metal And Polycarbonate",
+      "Lifespan": "Hanggat buhay ka(Hanggat May Eat Bulaga)",
+      "Installation": "Wall Mounted / Ceiling Mounted",
+      "Recommended Areas": "Living Room, Bedroom, Dining Area, Hallway"
+    }
+  },
+
+    {
+    name: "LUMAX LED Downlights – Up & Down",
+    category: "Wall",
+    images: [
+      "41.jpg"
+    ],
+    description: "Decorative up-and-down wall lighting design that creates an attractive beam effect on the wall.",
+    specs: {
+      "Light Color": "Warm, White",
+      "Voltage": "220V - 240V",
+      "Power": "7W / 10W / 12W",
+      "Material": "Aluminum body + PC diffuser, with high-efficiency SMD LED and LED driver.",
+      "Beam Effect": "Up & Down",
+      "Installation": "Down Wall, Wall Mounted",
+      "Lifespan": "30000+ Hours",
+      "Recommended Areas": "Exterior Wall, Hallway, Living Room, Entrance"
+    }
+  },
+                                {
+    name: "Wire Connector",
+    category: "Wire Connector",
+    images: [
+      "42.jpg"
+    ],
+    description: "Choose from tape connectors, extension cables, splitter wires, and power leads for single-color, CCT, RGB, RGBW, and RGB+CCT strips in 12V and 24V systems..",
+    specs: {
+    }
+  },
+
+    {
+    name: "Pin Lights (Recessed)",
+    category: "Pin Lights Wall",
+    images: [
+      "43.jpg"
+    ],
+    description: "LED Pin Light Illuminate your space with our LED Pin Lights, designed to provide bright, focused, and energy-efficient lighting for both residential and commercial applications. With their compact and sleek design, LED Pin Lights are perfect for creating a clean, modern look while delivering excellent illumination..",
+    specs: {
+      "Light Color": "Warm, White, Tri-Color",
+      "Voltage": "220V - 240V",
+      "Power": "3W / 6W / 9W / 12W / 18W ",
+      "Material": "Aluminum body + PC lens, with SMD LED and metal surface-mount base.",
+      "Beam Effect": "Up & Down Switch",
+      "Installation": "Down Wall, Wall Mounted",
+      "Lifespan": "30000+ Hours",
+      "Recommended Areas": "Exterior Wall, Hallway, Living Room, Entrance"
+    }
+  },
+             {
+    name: "Pin Lights (Surface)",
+    category: "Pin Lights Wall",
+    images: [
+      "44.jpg"
+    ],
+    description: "LED Pin Light Illuminate your space with our LED Pin Lights, designed to provide bright, focused, and energy-efficient lighting for both residential and commercial applications. With their compact and sleek design, LED Pin Lights are perfect for creating a clean, modern look while delivering excellent illumination..",
+    specs: {
+      "Light Color": "Warm, White, Tri-Color",
+      "Voltage": "220V - 240V",
+      "Power": "3W / 6W / 9W / 12W / 18W ",
+      "Material": "Aluminum body + PC lens, with SMD LED and metal surface-mount base.",
+      "Beam Effect": "Up & Down Switch",
+      "Installation": "Down Wall, Wall Mounted",
+      "Lifespan": "30000+ Hours",
+      "Recommended Areas": "Exterior Wall, Hallway, Living Room, Entrance"
+    }
+  },
+                       {
+    name:"Slim Mounted Linear LED Lights ",
+    category: "Linear LED Lights",
+    images: [
+      "45.jpg"
+    ],
+    description: "LED Linear Light. Enhance your space with our LED Linear Lights, a modern and stylish lighting solution designed to provide bright, even, and energy-efficient illumination. Its sleek and minimalist design makes it perfect for creating elegant lighting in both residential and commercial spaces.",
+    specs: {
+      "Light Color": "White",
+      "Voltage": "220V - 240V",
+      "Power": "30W / 40W / 50W / 60W / 88W ",
+      "Key features": "Slim and modern design Bright and energy-efficient LED lighting, Suitable for residential and commercial applications, Easy to Install",
+      "Material": "Aluminum body with a high-quality LED diffuser/cover.",
+      "Installation": "Down Wall, Wall Mounted",
+      "Lifespan": " Last between 25,000 to 50,000 hours, significantly reducing replacement and maintenance frequency.",
+      "Recommended Areas": "Exterior Wall, Hallway, Living Room, Entrance"
+    }
+  },
+
+  {
+    name:"T8 Tube LED Lights ",
+    category: "T8 LED Lights",
+    images: [
+      "46.png"
+    ],
+    description: "T8 LED lights are constructed using a combination of semiconductor components, heat-conducting metals, and protective outer shells.",
+    specs: {
+      "Light Color": "White, Warm",
+      "Voltage": "220V - 240V",
+      "Power": "30W / 40W ",
+      "Key features": "Design & Lens Choices: Offered in frosted lenses for wide, glare-free light distribution (180° beam angle) or clear glass for focused task lighting",
+      "Material": "LED Chips, Tube Body / Diffuser, Heat Sink / Housing, Circuit Board, End Caps and Pins",
+      "Installation": "Down Wall, Wall Mounted",
+      "Lifespan": "30000+ Hours",
+      "Recommended Areas": "Exterior Wall, Hallway, Living Room, Entrance"
+    }
+  },
+
+   {
+    name:"Emergency Twin Lights",
+    category: "Emergency Twin Spots Light",
+    images: [
+      "47.jpg"
+    ],
+    description: "Emergency lights automatically switch on during a power outage to provide instant visibility and safe guidance along evacuation paths.",
+    specs: {
+      "Light Color": "White, Warm",
+      "Voltage": "AC85V - 265V",
+      "Common Types": "Twin Head Units, Maintained vs Non-Maintained, Exit Sign Combos",
+      "Power": "30W / 40W ",
+      "Emergency Time Over": "Over 3 Hours",
+      "Key features": "Automatic Activation, Battery Backup, High-Intensity LEDs, Adjustable Lamp Heads, Test Function Button, Durable Construction ",
+      "Material": "Thermoplastic / ABS Plastic, Steel, Wet-Location Sealed Units, Circuitry & Control Board , Batteries ",
+      "Installation": "Down Wall, Wall Mounted",
+      "Lifespan": "Sealed Lead-Acid (SLA): Lasts 4 to 5 years.Nickel-Cadmium (Ni-Cd) / Nickel-Metal Hydride (Ni-MH): Lasts 3 to 5 years.Lithium Iron Phosphate (LiFePO₄): Lasts 5 to 12 years in modern",
+      "Recommended Areas": "Exterior Wall, Hallway, Living Room, Entrance"
+    }
+  },
+
+  /*
+  ========================================================
+  ⭐⭐ COPY THIS TEMPLATE TO ADD A NEW PRODUCT ⭐⭐
+  ========================================================
+
+  {
+    name: "YOUR NEW PRODUCT NAME",
+    category: "Wall",
+    images: [
+      "images/YOUR-NEW-PICTURE.jpg",
+      "images/YOUR-SECOND-PICTURE.jpg"
+    ],
+    description: "WRITE YOUR COMPLETE PRODUCT DESCRIPTION HERE.",
+    specs: {
+      "Power": "12W",
+      "Voltage": "220V – 240V",
+      "Light Color": "Warm White 3000K",
+      "Material": "Aluminum + Acrylic",
+      "Lifespan": "30,000+ Hours",
+      "Installation": "Wall Mounted",
+      "Recommended Areas": "Bedroom, Living Room, Hallway"
+    }
+  },
+
+  ========================================================
+  END OF NEW PRODUCT TEMPLATE
+  ========================================================
+  */
+];
+
+let currentCategory = "All";
+
+function setCategory(category, button){
+  currentCategory = category;
+  document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
+  button.classList.add("active");
+  renderProducts();
+}
+
+function searchableText(product){
+  return (
+    product.name + " " +
+    product.category + " " +
+    product.description + " " +
+    Object.entries(product.specs).map(([k,v]) => k + " " + v).join(" ")
+  ).toLowerCase();
+}
+
+function renderProducts(){
+  const grid = document.getElementById("productGrid");
+  const q = document.getElementById("searchBox").value.trim().toLowerCase();
+
+  const filtered = products.filter(product => {
+    const categoryOK = currentCategory === "All" || product.category === currentCategory;
+    const searchOK = !q || searchableText(product).includes(q);
+    return categoryOK && searchOK;
+  });
+
+  if(!filtered.length){
+    grid.innerHTML = '<div class="empty">Walang product na tumugma sa iyong search.</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map((product, index) => {
+    const firstSpecs = Object.entries(product.specs).slice(0,3)
+      .map(([k,v]) => `<span>${escapeHtml(k)}: ${escapeHtml(v)}</span>`).join("");
+
+    const originalIndex = products.indexOf(product);
+
+    return `
+      <article class="card" style="animation-delay:${index * 50}ms">
+        <div class="card-img">
+          <img src="${product.images[0]}" alt="${escapeHtml(product.name)}" loading="lazy">
+          <div class="tag">${escapeHtml(product.category)}</div>
+        </div>
+        <div class="card-body">
+          <h3>${escapeHtml(product.name)}</h3>
+          <p>${escapeHtml(product.description)}</p>
+          <div class="spec-mini">${firstSpecs}</div>
+          <button class="view" onclick="openModal(${originalIndex})">VIEW FULL DETAILS</button>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+function openModal(index){
+  const product = products[index];
+  const modal = document.getElementById("productModal");
+
+  document.getElementById("modalName").textContent = product.name;
+  document.getElementById("modalCategory").textContent = product.category;
+  document.getElementById("modalDescription").textContent = product.description;
+
+  const main = document.getElementById("modalMainImage");
+  main.src = product.images[0];
+  main.alt = product.name;
+
+  const thumbs = document.getElementById("modalThumbs");
+  thumbs.innerHTML = product.images.map((img, i) => `
+    <div class="thumb ${i===0 ? "active" : ""}" onclick="changeMainImage('${escapeAttr(img)}', this)">
+      <img src="${img}" alt="${escapeAttr(product.name)}">
+    </div>
+  `).join("");
+
+  document.getElementById("specTable").innerHTML =
+    Object.entries(product.specs).map(([key,value]) =>
+      `<tr><td>${escapeHtml(key)}</td><td>${escapeHtml(value)}</td></tr>`
+    ).join("");
+
+  modal.classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+
+function changeMainImage(src, el){
+  document.getElementById("modalMainImage").src = src;
+  document.querySelectorAll(".thumb").forEach(t => t.classList.remove("active"));
+  el.classList.add("active");
+}
+
+function closeModal(){
+  document.getElementById("productModal").classList.remove("show");
+  document.body.style.overflow = "";
+}
+
+function outsideClose(event){
+  if(event.target.id === "productModal") closeModal();
+}
+
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape") closeModal();
+});
+
+function escapeHtml(value){
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+function escapeAttr(value){ return escapeHtml(value); }
+
+document.getElementById("year").textContent = new Date().getFullYear();
+renderProducts();
+</script>
+
+</body>
+</html>
